@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/WHITE"
+    tools:showIn="@layout/activity_main">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/newsLottieAnimationView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/item_splash_icon_background"
+        app:layout_constraintBottom_toTopOf="@id/splashDescriptionLayout"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/webImageView"
+        app:layout_constraintStart_toEndOf="@id/rssImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="newspaper.json"
+        app:lottie_loop="true" />
+
+    <ImageView
+        android:id="@+id/rssImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/newsLottieAnimationView"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/newsLottieAnimationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.1"
+        app:srcCompat="@drawable/ic_rss_48dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/webImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/newsLottieAnimationView"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/newsLottieAnimationView"
+        app:layout_constraintWidth_percent="0.1"
+        app:srcCompat="@drawable/ic_web_48dp"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/splashDescriptionLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimens_double"
+        app:layout_constraintBottom_toTopOf="@id/splashVersionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newsLottieAnimationView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimens_half"
+            android:text="@string/description1"
+            android:textColor="@color/colorText1"
+            android:textSize="@dimen/textSize_splash_description"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimens_half"
+            android:text="@string/description2"
+            android:textColor="@color/colorText1"
+            android:textSize="@dimen/textSize_splash_description"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimens_half"
+            android:text="@string/description3"
+            android:textColor="@color/colorText1"
+            android:textSize="@dimen/textSize_splash_description"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/splashVersionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimens_double"
+        android:textColor="@color/colorText1"
+        android:textSize="@dimen/textSize_splash_version"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

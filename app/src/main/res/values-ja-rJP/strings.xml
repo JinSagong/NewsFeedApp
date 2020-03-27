@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ニュース フィード</string>
+    <string name="action_language">言語</string>
+    <string name="action_search">探す</string>
+    <string name="description3">ニュースをクリックすると、元のニュースを見ることができます</string>
+    <string name="description2">ニュースのキーワードを調べます</string>
+    <string name="description1">最新のニュースを提供します</string>
+    <string name="language_cancel">キャンセル</string>
+    <string name="language_done">完了</string>
+    <string name="language_title">言語</string>
+    <string name="search_init">検索して目的のニュースを見つけてください</string>
+    <string name="search_no_result">検索結果がありません</string>
+    <string name="hint_search">検索用語を入力してください</string>
+    <string name="last_update">"最後の更新: "</string>
+</resources>

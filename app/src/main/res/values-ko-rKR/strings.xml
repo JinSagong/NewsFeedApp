@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_language">언어</string>
+    <string name="action_search">검색</string>
+    <string name="app_name">뉴스 피드</string>
+    <string name="description1">최신 뉴스를 제공합니다</string>
+    <string name="description2">뉴스의 키워드를 알아보세요</string>
+    <string name="hint_search">검색어를 입력하세요</string>
+    <string name="language_done">완료</string>
+    <string name="language_title">언어</string>
+    <string name="search_init">검색하여 원하는 뉴스를 찾아보세요</string>
+    <string name="search_no_result">검색 결과가 없습니다</string>
+    <string name="description3">뉴스를 클릭하면 원본 뉴스를 볼 수 있습니다</string>
+    <string name="language_cancel">취소</string>
+    <string name="last_update">"마지막 업데이트: "</string>
+</resources>

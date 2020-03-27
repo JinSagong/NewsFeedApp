@@ -1,0 +1,20 @@
+<resources>
+    <dimen name="dimens_default">16dp</dimen>
+    <dimen name="dimens_half">8dp</dimen>
+    <dimen name="dimens_double">32dp</dimen>
+    <dimen name="dimens_small">4dp</dimen>
+
+    <dimen name="textSize_splash_description">20sp</dimen>
+    <dimen name="textSize_splash_version">14sp</dimen>
+
+    <dimen name="textSize_item_title">16sp</dimen>
+    <dimen name="textSize_item_info">10sp</dimen>
+    <dimen name="textSize_item_description">12sp</dimen>
+    <dimen name="textSize_item_keyword">10sp</dimen>
+
+    <dimen name="textSize_editText">15sp</dimen>
+    <dimen name="textSize_pageDescription">17sp</dimen>
+
+    <dimen name="textSize_dialog">17sp</dimen>
+
+</resources>

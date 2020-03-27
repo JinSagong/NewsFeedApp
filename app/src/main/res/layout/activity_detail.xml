@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/WHITE"
+    tools:context=".view.DetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_default"
+                android:layout_marginBottom="@dimen/dimens_half">
+
+                <ImageView
+                    android:id="@+id/detailBackImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/dimens_half"
+                    android:paddingEnd="@dimen/dimens_half"
+                    android:src="@drawable/ic_back_24dp"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detailTitleTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/dimens_half"
+                        android:paddingEnd="@dimen/dimens_half"
+                        android:paddingBottom="@dimen/dimens_small"
+                        android:textColor="@color/colorText1"
+                        android:textSize="@dimen/textSize_item_title"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/detailInfoTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:paddingStart="@dimen/dimens_half"
+                        android:paddingEnd="@dimen/dimens_half"
+                        android:paddingBottom="@dimen/dimens_half"
+                        android:textColor="@color/colorText2"
+                        android:textSize="@dimen/textSize_item_info" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimens_small"
+                        android:layout_marginTop="@dimen/dimens_small"
+                        android:layout_marginEnd="@dimen/dimens_small">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/detailKeyword1TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_small"
+                                android:layout_marginEnd="@dimen/dimens_small"
+                                android:background="@drawable/item_keyword_background"
+                                android:lines="1"
+                                android:textColor="@color/colorText1"
+                                android:textSize="@dimen/textSize_item_keyword" />
+
+                            <TextView
+                                android:id="@+id/detailKeyword2TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_small"
+                                android:layout_marginEnd="@dimen/dimens_small"
+                                android:background="@drawable/item_keyword_background"
+                                android:lines="1"
+                                android:textColor="@color/colorText1"
+                                android:textSize="@dimen/textSize_item_keyword" />
+
+                            <TextView
+                                android:id="@+id/detailKeyword3TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_small"
+                                android:layout_marginEnd="@dimen/dimens_small"
+                                android:background="@drawable/item_keyword_background"
+                                android:lines="1"
+                                android:textColor="@color/colorText1"
+                                android:textSize="@dimen/textSize_item_keyword" />
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/webViewProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_small"
+        android:layout_gravity="top"
+        android:max="100"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

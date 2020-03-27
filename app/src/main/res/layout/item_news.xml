@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimens_half"
+    android:layout_marginTop="@dimen/dimens_default"
+    android:layout_marginEnd="@dimen/dimens_half"
+    android:layout_marginBottom="@dimen/dimens_default">
+
+    <ProgressBar
+        android:id="@+id/itemProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/itemImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemInfoTextView" />
+
+    <TextView
+        android:id="@+id/itemTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:paddingStart="@dimen/dimens_half"
+        android:paddingEnd="@dimen/dimens_half"
+        android:paddingBottom="@dimen/dimens_small"
+        android:textColor="@color/colorText1"
+        android:textSize="@dimen/textSize_item_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/itemInfoTextView"
+        app:layout_constraintEnd_toStartOf="@id/itemImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemInfoTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:paddingStart="@dimen/dimens_half"
+        android:paddingEnd="@dimen/dimens_half"
+        android:paddingBottom="@dimen/dimens_default"
+        android:textColor="@color/colorText2"
+        android:textSize="@dimen/textSize_item_info"
+        app:layout_constraintBottom_toTopOf="@id/itemDescriptionTextView"
+        app:layout_constraintEnd_toStartOf="@id/itemImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemTitleTextView" />
+
+    <TextView
+        android:id="@+id/itemDescriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2"
+        android:paddingStart="@dimen/dimens_half"
+        android:paddingEnd="@dimen/dimens_half"
+        android:paddingBottom="@dimen/dimens_half"
+        android:textColor="@color/colorText1"
+        android:textSize="@dimen/textSize_item_description"
+        app:layout_constraintBottom_toTopOf="@id/itemKeywordScrollView"
+        app:layout_constraintEnd_toStartOf="@id/itemImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemInfoTextView" />
+
+    <HorizontalScrollView
+        android:id="@+id/itemKeywordScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimens_small"
+        android:layout_marginEnd="@dimen/dimens_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/itemImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemDescriptionTextView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/itemKeyword1TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_small"
+                android:layout_marginEnd="@dimen/dimens_small"
+                android:background="@drawable/item_keyword_background"
+                android:lines="1"
+                android:textColor="@color/colorText1"
+                android:textSize="@dimen/textSize_item_keyword" />
+
+            <TextView
+                android:id="@+id/itemKeyword2TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_small"
+                android:layout_marginEnd="@dimen/dimens_small"
+                android:background="@drawable/item_keyword_background"
+                android:lines="1"
+                android:textColor="@color/colorText1"
+                android:textSize="@dimen/textSize_item_keyword" />
+
+            <TextView
+                android:id="@+id/itemKeyword3TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_small"
+                android:layout_marginEnd="@dimen/dimens_small"
+                android:background="@drawable/item_keyword_background"
+                android:lines="1"
+                android:textColor="@color/colorText1"
+                android:textSize="@dimen/textSize_item_keyword" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <ImageView
+        android:id="@+id/itemImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dimens_half"
+        android:layout_marginEnd="@dimen/dimens_half"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

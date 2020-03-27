@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/dimens_default"
+    android:paddingTop="@dimen/dimens_default"
+    android:paddingEnd="@dimen/dimens_default">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/languageScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toTopOf="@id/languageControllerLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimens_default"
+                android:text="@string/language_title"
+                android:textColor="@color/colorText1"
+                android:textSize="@dimen/textSize_dialog"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/languageRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/dimens_default"
+                android:paddingEnd="@dimen/dimens_default"
+                android:paddingBottom="@dimen/dimens_default">
+
+                <RadioButton
+                    android:id="@+id/languageRadioButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimens_default"
+                    android:text="@string/language_en" />
+
+                <RadioButton
+                    android:id="@+id/languageRadioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimens_default"
+                    android:text="@string/language_kr" />
+
+                <RadioButton
+                    android:id="@+id/languageRadioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimens_default"
+                    android:text="@string/language_cn" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/languageControllerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimens_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/languageScrollView">
+
+        <TextView
+            android:id="@+id/languageCancelTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dimens_default"
+            android:text="@string/language_cancel"
+            android:textColor="@color/colorTheme"
+            android:textSize="@dimen/textSize_dialog" />
+
+        <TextView
+            android:id="@+id/languageDoneTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dimens_default"
+            android:text="@string/language_done"
+            android:textColor="@color/colorTheme"
+            android:textSize="@dimen/textSize_dialog" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

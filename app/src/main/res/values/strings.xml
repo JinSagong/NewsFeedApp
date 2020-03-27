@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">News Feed</string>
+
+    <!-- Main Activity -->
+    <string name="last_update">Last update: </string>
+
+    <!-- Splash Activity -->
+    <string name="description1">Provides the latest news</string>
+    <string name="description2">Find out the keywords of the news</string>
+    <string name="description3">Click on the news to see the original news</string>
+
+    <!-- Search Activity -->
+    <string name="search_init">Search for the news</string>
+    <string name="search_no_result">No results found</string>
+    <string name="hint_search">Search</string>
+
+    <!-- Language Dialog -->
+    <string name="language_title">Language</string>
+    <string name="language_en" translatable="false">English</string>
+    <string name="language_kr" translatable="false">한국어</string>
+    <string name="language_cn" translatable="false">日本語</string>
+    <string name="language_cancel">Cancel</string>
+    <string name="language_done">Done</string>
+
+    <!-- Menu Titles -->
+    <string name="action_language">Language</string>
+    <string name="action_search">Search</string>
+
+</resources>
