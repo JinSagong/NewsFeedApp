@@ -1,4 +1,4 @@
-package com.jin.news.rss
+package com.jin.news.model.rss
 
 import java.io.Serializable
 

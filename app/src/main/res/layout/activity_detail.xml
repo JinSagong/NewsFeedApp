@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WHITE"
-    tools:context=".view.DetailActivity">
+    tools:context=".view.activity.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,8 +19,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_default"
-                android:layout_marginBottom="@dimen/dimens_half">
+                android:layout_marginTop="@dimen/dimens_default">
 
                 <ImageView
                     android:id="@+id/detailBackImageView"
@@ -62,9 +61,8 @@
                     <HorizontalScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimens_small"
-                        android:layout_marginTop="@dimen/dimens_small"
-                        android:layout_marginEnd="@dimen/dimens_small">
+                        android:paddingStart="@dimen/dimens_small"
+                        android:paddingEnd="@dimen/dimens_small">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -75,7 +73,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimens_small"
+                                android:layout_marginTop="@dimen/dimens_small"
                                 android:layout_marginEnd="@dimen/dimens_small"
+                                android:layout_marginBottom="@dimen/dimens_half"
                                 android:background="@drawable/item_keyword_background"
                                 android:lines="1"
                                 android:textColor="@color/colorText1"
@@ -86,7 +86,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimens_small"
+                                android:layout_marginTop="@dimen/dimens_small"
                                 android:layout_marginEnd="@dimen/dimens_small"
+                                android:layout_marginBottom="@dimen/dimens_half"
                                 android:background="@drawable/item_keyword_background"
                                 android:lines="1"
                                 android:textColor="@color/colorText1"
@@ -97,7 +99,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimens_small"
+                                android:layout_marginTop="@dimen/dimens_small"
                                 android:layout_marginEnd="@dimen/dimens_small"
+                                android:layout_marginBottom="@dimen/dimens_half"
                                 android:background="@drawable/item_keyword_background"
                                 android:lines="1"
                                 android:textColor="@color/colorText1"
@@ -106,7 +110,6 @@
                         </LinearLayout>
 
                     </HorizontalScrollView>
-
 
                 </LinearLayout>
 
@@ -117,6 +120,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/webViewScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -135,6 +139,18 @@
         android:layout_height="@dimen/dimens_small"
         android:layout_gravity="top"
         android:max="100"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <TextView
+        android:id="@+id/detailDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/dimens_half"
+        android:text="@string/error"
+        android:textColor="@color/colorText1"
+        android:textSize="@dimen/textSize_pageDescription"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

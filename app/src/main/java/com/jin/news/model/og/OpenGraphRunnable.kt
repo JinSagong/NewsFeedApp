@@ -1,23 +1,19 @@
-package com.jin.news.og
+package com.jin.news.model.og
 
 import android.os.Process
-import com.jin.news.rss.RssItem
-import com.jin.news.util.specialCharSequence
+import com.jin.news.util.KeywordGenerator
+import com.jin.news.model.rss.RssItem
+import com.jin.news.util.LOADING_TIME
 import org.jsoup.Jsoup
 import java.lang.Exception
 import java.net.URL
-import java.util.*
-import kotlin.collections.ArrayList
 
-class OpenGraphRunnable(
-    private val item: RssItem,
-    private val mCallback: OpenGraphCallback
-) : Runnable {
+class OpenGraphRunnable(private val item: RssItem, private val mCallback: OpenGraphCallback) :
+    Runnable {
     override fun run() {
         Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
         try {
-            val head =
-                Jsoup.parse(URL(item.link), 10000).head().getElementsByTag("meta")
+            val head = Jsoup.parse(URL(item.link), LOADING_TIME.toInt()).head().getElementsByTag("meta")
             head.forEach { element ->
                 when (element.attr("property")) {
                     "og:url" -> item.link_url = element.attr("content")
@@ -33,8 +29,10 @@ class OpenGraphRunnable(
                             .replace("&#39;", "'")
                             .replace("&#035;", "#")
                             .replace("&#039;", "'")
+                            .replace("\n", " ")
+                            .replace("\t", " ")
                         item.link_description = description
-                        val keywords = getKeywords(description)
+                        val keywords = KeywordGenerator.getKeywords(description)
                         item.keyword1 = keywords[0]
                         item.keyword2 = keywords[1]
                         item.keyword3 = keywords[2]
@@ -42,25 +40,9 @@ class OpenGraphRunnable(
                 }
             }
             item.loaded = true
-            mCallback.success()
+            mCallback.success(item)
         } catch (e: Exception) {
-            mCallback.failure()
+            mCallback.failure(item)
         }
-    }
-
-    private fun getKeywords(description: String): ArrayList<String?> {
-        val result = arrayListOf<String?>()
-        val st = StringTokenizer(description, specialCharSequence)
-        val map = TreeMap<String, Int>()
-        while (st.hasMoreTokens()) {
-            st.nextToken()?.let { if (it.length >= 2) map[it] = (map[it] ?: 0) + 1 }
-        }
-        for (i: Int in 0..2) {
-            map.maxBy { it.value }?.let {
-                result.add(it.key)
-                map.entries.remove(it)
-            } ?: result.add(null)
-        }
-        return result
     }
 }

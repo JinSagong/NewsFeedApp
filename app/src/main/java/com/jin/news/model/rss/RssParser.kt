@@ -1,4 +1,4 @@
-package com.jin.news.rss
+package com.jin.news.model.rss
 
 import com.jin.news.util.TimeFormat
 import org.xml.sax.Attributes
@@ -21,6 +21,7 @@ class RssParser : DefaultHandler() {
 
     private var titleAndSource = ""
 
+    // 태그의 시작(<tag>)을 발견할 때 호출됨
     @Throws(SAXException::class)
     override fun startElement(
         uri: String?, localName: String?, qName: String?, attributes: Attributes?
@@ -46,6 +47,7 @@ class RssParser : DefaultHandler() {
         super.startElement(uri, localName, qName, attributes)
     }
 
+    // 태그의 끝(</tag>)을 발견할 때 호출됨
     @Throws(SAXException::class)
     override fun endElement(uri: String?, localName: String?, qName: String?) {
         when (localName) {
@@ -71,6 +73,7 @@ class RssParser : DefaultHandler() {
         super.endElement(uri, localName, qName)
     }
 
+    // 태그의 시작(<tag>)과 끝(</tag>) 사이의 값을 읽어옴
     @Throws(SAXException::class)
     override fun characters(ch: CharArray?, start: Int, length: Int) {
         val buff = ch?.let { String(ch, start, length) } ?: ""

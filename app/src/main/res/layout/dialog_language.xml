@@ -97,5 +97,7 @@
             android:text="@string/language_done"
             android:textColor="@color/colorTheme"
             android:textSize="@dimen/textSize_dialog" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

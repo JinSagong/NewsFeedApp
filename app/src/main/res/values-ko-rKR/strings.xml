@@ -13,4 +13,5 @@
     <string name="description3">뉴스를 클릭하면 원본 뉴스를 볼 수 있습니다</string>
     <string name="language_cancel">취소</string>
     <string name="last_update">"마지막 업데이트: "</string>
+    <string name="error">네트워크 연결이 올바르지 않거나\n네트워크 에러가 발생하였습니다\n잠시 후 다시 시도해주세요</string>
 </resources>

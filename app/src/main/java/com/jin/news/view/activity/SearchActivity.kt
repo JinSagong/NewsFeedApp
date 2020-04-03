@@ -1,4 +1,4 @@
-package com.jin.news.view
+package com.jin.news.view.activity
 
 import android.content.Context
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jin.news.R
-import com.jin.news.adapter.NewsAdapter
+import com.jin.news.view.adapter.NewsAdapter
 import com.jin.news.util.LocaleWrapper
 import com.jin.news.viewmodel.NewsViewModel
 import kotlinx.android.synthetic.main.activity_search.*
@@ -23,12 +23,12 @@ class SearchActivity : AppCompatActivity() {
     private val mAdapter: NewsAdapter by inject()
     private val mViewModel: NewsViewModel by viewModel()
 
-    private var refreshFlag = false
-
     private val imm by lazy { getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
 
     private var onSearch = true
     private var onEmptyQuery = true
+
+    private var millisCreated: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,16 +39,7 @@ class SearchActivity : AppCompatActivity() {
         initDataBinding()
         initRefresh()
         setFab()
-
-        searchBackImageView.setOnClickListener {
-            if (onEmptyQuery) onBackPressed() else searchEditText.setText("")
-        }
-        searchEditText.addTextChangedListener { notifyQueryChanged(it) }
-        searchEditText.setOnEditorActionListener { _, _, _ ->
-            refresh()
-            true
-        }
-        searchImageView.setOnClickListener { refresh() }
+        setListeners()
     }
 
     private fun initStartView() = with(searchRecyclerView) {
@@ -58,19 +49,29 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun initDataBinding() = mViewModel.responseLiveData.observe(this, Observer {
-        if (it.items?.size == 0) {
-            // 검색 결과가 없음을 나타냅니다.
-            searchSwipeRefreshLayout.visibility = View.GONE
-            searchDescriptionTextView.text = getString(R.string.search_no_result)
-            searchDescriptionTextView.visibility = View.VISIBLE
-        } else {
-            // 검색 결과를 표시합니다.
-            searchSwipeRefreshLayout.visibility = View.VISIBLE
-            searchDescriptionTextView.visibility = View.GONE
-            mAdapter.updateItem(it)
+        when {
+            it.millisCreated == null -> {
+                // 검색 결과를 불러올 수 없음을 나타냄
+                searchRecyclerView.visibility = View.GONE
+                searchDescriptionTextView.text = getString(R.string.error)
+                searchDescriptionTextView.visibility = View.VISIBLE
+            }
+            it.items?.size == 0 -> {
+                // 검색 결과가 없음을 나타냄
+                searchSwipeRefreshLayout.visibility = View.GONE
+                searchDescriptionTextView.text = getString(R.string.search_no_result)
+                searchDescriptionTextView.visibility = View.VISIBLE
+            }
+            else -> {
+                // 검색 결과를 표시함
+                searchRecyclerView.visibility = View.VISIBLE
+                searchDescriptionTextView.visibility = View.GONE
+                mAdapter.updateItem(it)
+            }
         }
-        if (refreshFlag) {
-            refreshFlag = false
+
+        if (it.millisCreated == null || millisCreated != it.millisCreated) {
+            millisCreated = it.millisCreated
             searchSwipeRefreshLayout.isRefreshing = false
             searchRecyclerView.smoothScrollToPosition(0)
         }
@@ -78,14 +79,14 @@ class SearchActivity : AppCompatActivity() {
 
     private fun initRefresh() = with(searchSwipeRefreshLayout) {
         setColorSchemeColors(ContextCompat.getColor(context, R.color.colorTheme))
-        setOnRefreshListener { refresh() }
+        setOnRefreshListener { refresh(false) }
     }
 
-    private fun refresh() {
-        if (!onEmptyQuery && !refreshFlag) {
-            refreshFlag = true
+    private fun refresh(touched: Boolean) {
+        if (!onEmptyQuery && ((touched && !searchSwipeRefreshLayout.isRefreshing) || !touched)) {
             imm.hideSoftInputFromWindow(searchEditText.windowToken, 0)
             if (!searchSwipeRefreshLayout.isRefreshing) searchSwipeRefreshLayout.isRefreshing = true
+            searchSwipeRefreshLayout.visibility = View.VISIBLE
             mViewModel.getNews(searchEditText.text.toString())
         }
     }
@@ -95,21 +96,20 @@ class SearchActivity : AppCompatActivity() {
         searchTopFab.setOnClickListener { searchRecyclerView.smoothScrollToPosition(0) }
         searchRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val position =
-                    (recyclerView.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
+                val position = (recyclerView.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
                 if (dy >= 0 || position == 0) searchTopFab.hide() else searchTopFab.show()
             }
         })
     }
 
-    private fun notifyQueryChanged(query: Editable?) {
-        if (query.isNullOrEmpty()) {
-            onEmptyQuery = true
-            searchBackImageView.setImageResource(R.drawable.ic_back_24dp)
-        } else {
-            onEmptyQuery = false
-            searchBackImageView.setImageResource(R.drawable.ic_close_20dp)
+    private fun setListeners() {
+        searchBackImageView.setOnClickListener { if (onEmptyQuery) onBackPressed() else searchEditText.setText("") }
+        searchEditText.addTextChangedListener {
+            if (it.isNullOrEmpty()) searchBackImageView.setImageResource(R.drawable.ic_back_24dp).run { onEmptyQuery = true }
+            else searchBackImageView.setImageResource(R.drawable.ic_close_20dp).run { onEmptyQuery = false }
         }
+        searchEditText.setOnEditorActionListener { _, _, _ -> refresh(true).run { true } }
+        searchImageView.setOnClickListener { refresh(true) }
     }
 
     override fun onPause() {
@@ -117,12 +117,8 @@ class SearchActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        onSearch = false
-    }
+    override fun onBackPressed() = super.onBackPressed().run { onSearch = false }
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(LocaleWrapper.wrap(newBase))
-    }
+    // 설정한 언어를 SearchActivity 에 적용하기
+    override fun attachBaseContext(newBase: Context?) = super.attachBaseContext(LocaleWrapper.wrap(newBase))
 }

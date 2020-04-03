@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.3"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="newspaper.json"
+        app:lottie_fileName="lottie_newspaper.json"
         app:lottie_loop="true" />
 
     <ImageView

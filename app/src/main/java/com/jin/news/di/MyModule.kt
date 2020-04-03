@@ -1,10 +1,10 @@
 package com.jin.news.di
 
-import com.jin.news.adapter.NewsAdapter
-import com.jin.news.model.Repository
-import com.jin.news.model.RepositoryImpl
-import com.jin.news.rss.RssConverterFactory
-import com.jin.news.rss.RssService
+import com.jin.news.view.adapter.NewsAdapter
+import com.jin.news.model.repository.Repository
+import com.jin.news.model.repository.RepositoryImpl
+import com.jin.news.model.rss.RssConverterFactory
+import com.jin.news.model.rss.RssService
 import com.jin.news.viewmodel.NewsViewModel
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module

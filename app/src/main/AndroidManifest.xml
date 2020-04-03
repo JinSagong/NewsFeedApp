@@ -18,7 +18,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
         </activity>
 
         <activity
-            android:name=".view.DetailActivity"
+            android:name=".view.activity.DetailActivity"
             android:configChanges="orientation|screenSize" />
 
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".view.activity.SearchActivity"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustResize"/>
 

@@ -22,40 +22,57 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues true
+        unitTests.includeAndroidResources true
+    }
     kotlinOptions { jvmTarget = "1.8" }
     dataBinding { enabled true }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.android.material:material:1.1.0'
+
+    // Unit Test 를 위해 Junit, Koin, Mockito 라이브러리를 이용함
     testImplementation 'junit:junit:4.12'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    testImplementation 'org.koin:koin-test:1.0.2' // Mockito 포함
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // AndroidX
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
 
     // Kotlin 언어를 이용하였고 코드의 간결화를 위해 Splitties 라이브러리를 이용함
     // (https://github.com/LouisCAD/Splitties)
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.louiscad.splitties:splitties-activities:$splitties_version"
-    implementation "com.louiscad.splitties:splitties-toast:$splitties_version"
     implementation "com.louiscad.splitties:splitties-typesaferecyclerview:$splitties_version"
-    implementation "com.louiscad.splitties:splitties-preferences:$splitties_version"
 
+    // 애니메이션 구현을 위해 Lottie 라이브러리를 이용함
+    // (https://github.com/airbnb/lottie-android)
     implementation 'com.airbnb.android:lottie:3.0.0'
 
+    // Reactive Programming 을 위해 RxJava2 라이브러리를 이용함
+    // (https://github.com/ReactiveX/RxJava/tree/2.x)
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
+    // 서버와의 통신을 위해 Retrofit 라이브러리를 이용함
+    // (https://square.github.io/retrofit)
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
+    // Dependency Injection 을 위해 Koin 라이브러리를 이용함
+    // (https://github.com/InsertKoinIO/koin)
     implementation 'org.koin:koin-androidx-viewmodel:1.0.2'
 
+    // Open Graph 파싱을 위해 Jsoup 라이브러리를 이용함
+    // (https://jsoup.org)
     implementation 'org.jsoup:jsoup:1.11.3'
 
     // 이미지 로딩을 위해 Glide 라이브러리를 이용함

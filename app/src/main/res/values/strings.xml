@@ -1,8 +1,9 @@
 <resources>
+
     <string name="app_name">News Feed</string>
 
     <!-- Main Activity -->
-    <string name="last_update">Last update: </string>
+    <string name="last_update">"Last update: "</string>
 
     <!-- Splash Activity -->
     <string name="description1">Provides the latest news</string>
@@ -21,6 +22,9 @@
     <string name="language_cn" translatable="false">日本語</string>
     <string name="language_cancel">Cancel</string>
     <string name="language_done">Done</string>
+
+    <!-- Error Message -->
+    <string name="error">You\'re not connected to a network\nor network error occurred\nPlease try again later</string>
 
     <!-- Menu Titles -->
     <string name="action_language">Language</string>

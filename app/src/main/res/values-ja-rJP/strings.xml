@@ -13,4 +13,5 @@
     <string name="search_no_result">検索結果がありません</string>
     <string name="hint_search">検索用語を入力してください</string>
     <string name="last_update">"最後の更新: "</string>
+    <string name="error">ネットワークに接続されていないか\nネットワークエラーが発生しました\n後でやり直してください</string>
 </resources>

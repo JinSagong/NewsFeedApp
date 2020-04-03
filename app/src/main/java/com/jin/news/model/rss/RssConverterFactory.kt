@@ -1,4 +1,4 @@
-package com.jin.news.rss
+package com.jin.news.model.rss
 
 import android.util.Log
 import com.jin.news.util.TimeFormat
@@ -23,7 +23,10 @@ class RssConverterFactory : Converter.Factory() {
                 val xmlReader = SAXParserFactory.newInstance().newSAXParser().xmlReader
                 xmlReader.contentHandler = parser
                 xmlReader.parse(InputSource(value.charStream()))
-                lastBuildDate = TimeFormat.getTime(parser.lastBuildDate)
+
+                // xmlReader 의 파싱작업이 끝난 후 다음 작업들을 처리함
+                millisCreated = TimeFormat.currentMillis()
+                lastBuildDate = TimeFormat.getTime(null, TimeFormat.toMillis(parser.lastBuildDate))
                 items = parser.items
                 Log.d(
                     this.javaClass.simpleName,
