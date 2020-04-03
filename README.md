@@ -2,7 +2,7 @@
 
 Created: 2020-03-16
 
-Last Updated: 2020-03-27
+Last Updated: 2020-04-03
 
 ## Screenshot
 
@@ -21,7 +21,9 @@ Supports various languages.
 * Glide
 * Lottie (For animation)
 * RxKotlin, RxAndroid
+* Retrofit
 * Koin (Dependency injection)
 * Jsoup (For parsing open graph tag)
 * RssParser
 * Material Design
+* Unit Test (JUnit, Koin Test, Mockito)
